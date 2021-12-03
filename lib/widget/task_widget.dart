@@ -40,8 +40,8 @@ class _TaskWidgetState extends State<TaskWidget> {
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         leading: Container(
-          padding: EdgeInsets.only(right: 12),
-          decoration: BoxDecoration(
+          padding: const EdgeInsets.only(right: 12),
+          decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(width: 1),
             ),
@@ -66,7 +66,7 @@ class _TaskWidgetState extends State<TaskWidget> {
           children: [
             Icon(
               Icons.linear_scale_outlined,
-              color: Colors.pink.shade800,
+              color: Constant.backgroundColor,
             ),
             Text(
               widget.taskDescription,
@@ -78,7 +78,7 @@ class _TaskWidgetState extends State<TaskWidget> {
         ),
         trailing: Icon(
           Icons.keyboard_arrow_right,
-          color: Colors.pink.shade800,
+          color: Constant.backgroundColor,
         ),
       ),
     );
@@ -131,7 +131,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Icon(
                           Icons.delete,
                           color: Colors.red,

@@ -255,7 +255,7 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        color: Colors.pink,
+                                        color: Constant.backgroundColor,
                                         border: Border.all(
                                           width: 2,
                                           color: Colors.white,
@@ -393,7 +393,15 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
                       ),
                       GestureDetector(
                         onTap: () {
-                          _showTaskCategory(context: context, size: size);
+                          GlobalMethod.showPositionCompany(
+                                onTap: (index) {
+                              setState(() {
+                                _positionCPController.text =
+                                Constant.jobsList[index];
+                              });
+                              Navigator.pop(context);
+                            },
+                            context: context, size: size,);
                         },
                         child: TextFormField(
                           focusNode: _positionCPFocusNode,
@@ -410,14 +418,14 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
                             }
                           },
                           style: const TextStyle(color: Colors.white),
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                             hintText: 'Position is the company',
                             hintStyle: TextStyle(color: Colors.white),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.pink),
+                              borderSide: BorderSide(color: Constant.backgroundColor),
                             ),
                             errorBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.red),
@@ -445,7 +453,7 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
                         ),
                       )
                     : MaterialButton(
-                        color: Colors.pink.shade700,
+                        color: Constant.backgroundColor,
                         elevation: 8,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25)),
@@ -527,17 +535,17 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
                 _pickedImageFromCamera();
               },
               child: Row(
-                children: const [
+                children:  [
                   Padding(
                     padding: EdgeInsets.all(4.0),
                     child: Icon(
                       Icons.camera,
-                      color: Colors.purple,
+                      color: Constant.backgroundColor,
                     ),
                   ),
                   Text(
                     'Camera',
-                    style: TextStyle(color: Colors.purple),
+                    style: TextStyle(color: Constant.textColor),
                   ),
                 ],
               ),
@@ -547,17 +555,17 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
                 _pickedImageFromGallery();
               },
               child: Row(
-                children: const [
+                children:  [
                   Padding(
                     padding: EdgeInsets.all(4.0),
                     child: Icon(
                       Icons.photo,
-                      color: Colors.purple,
+                      color: Constant.backgroundColor,
                     ),
                   ),
                   Text(
                     'Gallery',
-                    style: TextStyle(color: Colors.purple),
+                    style: TextStyle(color:Constant.textColor),
                   ),
                 ],
               ),
@@ -574,7 +582,7 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
         builder: (ctx) => AlertDialog(
               title: Text(
                 'Choose yor job',
-                style: TextStyle(color: Colors.pink.shade800),
+                style: TextStyle(color:Constant.textColor),
               ),
               content: Container(
                 width: size.width * 0.9,
@@ -593,7 +601,7 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
                             children: [
                               Icon(
                                 Icons.check_circle_rounded,
-                                color: Colors.red.shade200,
+                                color: Constant.backgroundColor,
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),

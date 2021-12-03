@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:work_os/constant/constant.dart';
 import 'package:work_os/screens/auth/register.dart';
 
 class ResetPassword extends StatefulWidget {
@@ -107,18 +108,18 @@ class _ResetPasswordState extends State<ResetPassword> with TickerProviderStateM
                             hintStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
                             enabledBorder: UnderlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(color: Colors.white),
+                              borderSide: BorderSide(color:Constant.backgroundColor),
                             ),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                             ),
                             ),
                           ),
-                        SizedBox(
+                       const SizedBox(
                           height: 40,
                         ),
                         MaterialButton(
-                          color: Colors.pink.shade700,
+                          color:Constant.backgroundColor,
                           elevation: 8,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25)),

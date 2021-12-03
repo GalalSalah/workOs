@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttericon/elusive_icons.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:uuid/uuid.dart';
 import 'package:work_os/constant/constant.dart';
@@ -65,7 +66,7 @@ class _AddTaskState extends State<AddTask> {
           'createdAt': Timestamp.now(),
           'isDone': false,
         });
-       await Fluttertoast.showToast(
+        await Fluttertoast.showToast(
             msg: "The task has been uploaded",
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.CENTER,
@@ -73,12 +74,12 @@ class _AddTaskState extends State<AddTask> {
             backgroundColor: Constant.backgroundColor,
             textColor: Constant.textColor,
             fontSize: 19.0);
-       _taskDescriptionController.clear();
-       _taskTitleController.clear();
-       setState(() {
-         _taskDeadlineController.text='Choose Deadline date';
-         _taskCategoryController.text='Choose category';
-       });
+        _taskDescriptionController.clear();
+        _taskTitleController.clear();
+        setState(() {
+          _taskDeadlineController.text = 'Choose Deadline date';
+          _taskCategoryController.text = 'Choose category';
+        });
       } catch (e) {
         print(e);
       } finally {
@@ -147,7 +148,9 @@ class _AddTaskState extends State<AddTask> {
                             controller: _taskCategoryController,
                             enable: false,
                             fct: () {
-                              _showTaskCategory(context: context, size: size);
+                              GlobalMethod.showTaskCategory(
+
+                                  context: context, size: size);
                             },
                             maxLength: 100,
                             valueKey: 'TaskCategory'),
@@ -187,10 +190,10 @@ class _AddTaskState extends State<AddTask> {
                     alignment: Alignment.center,
                     child: _isLoading
                         ? CircularProgressIndicator(
-                            color: Colors.pink.shade700,
+                            color: Colors.white,
                           )
                         : MaterialButton(
-                            color: Colors.pink.shade700,
+                            color: Constant.backgroundColor,
                             elevation: 8,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25)),
@@ -229,12 +232,13 @@ class _AddTaskState extends State<AddTask> {
     );
   }
 
-  Widget _textFormFields(
-      {required String valueKey,
-      required TextEditingController controller,
-      required Function fct,
-      required bool enable,
-      required int maxLength}) {
+  Widget _textFormFields({
+    required String valueKey,
+    required TextEditingController controller,
+    required Function fct,
+    required bool enable,
+    required int maxLength,
+  }) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: InkWell(
@@ -253,25 +257,25 @@ class _AddTaskState extends State<AddTask> {
           controller: controller,
           enabled: enable,
           key: ValueKey(valueKey),
-          style: TextStyle(
+          style:  TextStyle(
               color: Constant.textColor,
               fontWeight: FontWeight.bold,
               fontStyle: FontStyle.italic),
           maxLines: valueKey == 'TaskDescription' ? 3 : 1,
           maxLength: maxLength,
           keyboardType: TextInputType.text,
-          decoration:const InputDecoration(
+          decoration: InputDecoration(
             filled: true,
-            fillColor: Color(0xfffff2f4),
+            fillColor: Colors.grey.shade200,
             // Theme.of(context).scaffoldBackgroundColor,
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.white),
             ),
             focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.pink),
+              borderSide: BorderSide(color: Constant.backgroundColor),
             ),
-            errorBorder:  UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.red),
+            errorBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Constant.backgroundColor),
             ),
           ),
         ),
@@ -281,10 +285,8 @@ class _AddTaskState extends State<AddTask> {
 
   void _pickDateDialog() async {
     picked = await showDatePicker(
-
       context: context,
       initialDate: DateTime.now(),
-
       firstDate: DateTime.now().subtract(const Duration(days: 0)),
       lastDate: DateTime(2100),
     );
@@ -299,63 +301,13 @@ class _AddTaskState extends State<AddTask> {
     }
   }
 
-  _showTaskCategory({required BuildContext context, required Size size}) {
-    showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-              title: Text(
-                'Task Category',
-                style: TextStyle(color: Colors.pink.shade800),
-              ),
-              content: Container(
-                width: size.width * 0.9,
-                child: ListView.builder(
-                    itemCount: Constant.categoryListFilter.length,
-                    shrinkWrap: true,
-                    itemBuilder: (ctx, index) => InkWell(
-                          onTap: () {
-                            setState(() {
-                              _taskCategoryController.text =
-                                  Constant.categoryListFilter[index];
-                            });
-                            Navigator.pop(context);
-                          },
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.check_circle_rounded,
-                                color: Colors.red.shade200,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  Constant.categoryListFilter[index],
-                                  style: TextStyle(
-                                      color: Constant.textColor,
-                                      fontStyle: FontStyle.italic,
-                                      fontSize: 18),
-                                ),
-                              )
-                            ],
-                          ),
-                        )),
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {},
-                  child: const Text('Cancel '),
-                ),
-              ],
-            ));
-  }
-
   Widget _titleWidget({required String label}) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Text(
         label,
         style: TextStyle(
-          color: Colors.pink[800],
+          color: Constant.textColor,
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),

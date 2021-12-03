@@ -64,7 +64,7 @@ class _AllWorkerWidgetState extends State<AllWorkerWidget> {
             children: [
               Icon(
                 Icons.linear_scale_outlined,
-                color: Colors.pink.shade800,
+                color: Constant.backgroundColor,
               ),
                Text(
                 '${widget.positionInCompany} / ${widget.phoneNumber}',
@@ -78,7 +78,7 @@ class _AllWorkerWidgetState extends State<AllWorkerWidget> {
             onPressed: _mailTo,
             icon: Icon(
               Icons.mail_outline,
-              color: Colors.pink.shade800,
+              color: Constant.backgroundColor,
             ),
           )),
     );

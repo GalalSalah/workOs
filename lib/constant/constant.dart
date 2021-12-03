@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 class Constant{
- static Color textColor= Color(0xFF00325A);
- static Color backgroundColor=Color(0xfffff2f4);
+ static Color textColor= Color(0xFF202020);
+ static Color backgroundColor=Color(0xff78C3E2);
 
 
  static  List<String> categoryListFilter = [

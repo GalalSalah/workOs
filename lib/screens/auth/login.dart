@@ -263,7 +263,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                         ),
                       )
                     : MaterialButton(
-                        color: Colors.pink.shade700,
+                        color: Constant.backgroundColor,
                         elevation: 8,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25)),

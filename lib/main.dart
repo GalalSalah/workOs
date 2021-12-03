@@ -1,12 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:work_os/constant/constant.dart';
-import 'package:work_os/screens/auth/login.dart';
-import 'package:work_os/screens/inner_screens/profile.dart';
-import 'package:work_os/screens/inner_screens/task_details.dart';
-import 'package:work_os/user_state.dart';
 
-import 'screens/pages/task_page.dart';
+import 'package:work_os/user_state.dart';
 
 void main() {
   WidgetsFlutterBinding();
@@ -21,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: _initialization,
-        builder: (context, snapshot){
+        builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
@@ -49,11 +45,11 @@ class MyApp extends StatelessWidget {
               ),
             );
           } else {
-           return MaterialApp(
+            return MaterialApp(
               title: 'Flutter WorkOs',
               debugShowCheckedModeBanner: false,
               theme: ThemeData(),
-              home:  UserState(),
+              home: UserState(),
             );
           }
         });

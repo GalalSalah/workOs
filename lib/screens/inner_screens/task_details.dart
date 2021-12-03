@@ -24,7 +24,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
       color: Constant.textColor, fontSize: 15, fontWeight: FontWeight.normal);
   final _titleStyle = TextStyle(
       color: Constant.textColor, fontSize: 15, fontWeight: FontWeight.bold);
-  TextEditingController _addCommentController = TextEditingController();
+  final TextEditingController _addCommentController = TextEditingController();
   bool _isComment = false;
   String? authorName;
   String? authorPosition;
@@ -88,19 +88,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
       var date = deadLineTimeStamp!.toDate();
       isDeadLineAvailable = date.isAfter(DateTime.now());
     }
-    // else {
-    //   setState(() {
-    //     taskTitle = taskDataBase.get('taskTitle');
-    //     taskDescription = taskDataBase.get('taskDescription');
-    //     _isDone = taskDataBase.get('isDone');
-    //     postDateTimeStamp = taskDataBase.get('createdAt');
-    //     deadLineTimeStamp = taskDataBase.get('deadLineDate');
-    //     var postDate = postDateTimeStamp!.toDate();
-    //     postedDate = '${postDate.year}-${postDate.month}-${postDate.day}';
-    //   });
-    //   var date = deadLineTimeStamp!.toDate();
-    //   isDeadLineAvailable = date.isAfter(DateTime.now());
-    // }
+
   }
 
   @override
@@ -176,6 +164,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                               ),
                             ),
                           ),
+                          SizedBox(width: 5,),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -283,12 +272,12 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                           ),
                           Opacity(
                             opacity: _isDone == true ? 1 : 0,
-                            child: Icon(
+                            child: const Icon(
                               Icons.check_box,
                               color: Colors.green,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 40,
                           ),
                           TextButton(
@@ -371,9 +360,9 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                                             color: Colors.white,
                                           ),
                                         ),
-                                        focusedBorder: const OutlineInputBorder(
+                                        focusedBorder:  OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Colors.pink,
+                                            color: Constant.backgroundColor,
                                           ),
                                         ),
                                       ),
@@ -386,7 +375,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 8.0),
                                           child: MaterialButton(
-                                            color: Colors.pink.shade700,
+                                            color: Constant.backgroundColor,
                                             elevation: 8,
                                             shape: RoundedRectangleBorder(
                                                 borderRadius:
@@ -457,7 +446,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                                             child: Text(
                                               'Cancel',
                                               style: TextStyle(
-                                                  color: Colors.pink.shade900),
+                                                  color: Constant.backgroundColor),
                                             ))
                                       ],
                                     ),
@@ -477,7 +466,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                               )
                             : Center(
                                 child: MaterialButton(
-                                  color: Colors.pink.shade700,
+                                  color: Constant.backgroundColor,
                                   elevation: 8,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25)),

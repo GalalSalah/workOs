@@ -20,7 +20,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  var _titleTextStyle = TextStyle(
+  final _titleTextStyle = const TextStyle(
       fontSize: 22, fontStyle: FontStyle.normal, fontWeight: FontWeight.bold);
   var contentTextStyle = TextStyle(
       color: Constant.textColor,
@@ -86,14 +86,14 @@ print(e);
       backgroundColor: Constant.backgroundColor,
       appBar: AppBar(
 
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black,
         ),
         elevation: 0,
         backgroundColor: Constant.backgroundColor
       ),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(top: 0),
@@ -184,13 +184,13 @@ print(e);
                               icon: Icons.call_outlined),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 25,
                       ),
-                      _isSameUser ? Container() : Divider(
+                      _isSameUser ? Container() : const Divider(
                         thickness: 1,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 25,
                       ),
                       !_isSameUser ? Container() : Center(
@@ -206,7 +206,7 @@ print(e);
                                 ),
                               );
                             },
-                            color: Colors.pink.shade700,
+                            color: Constant.backgroundColor,
                             elevation: 8,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(13)),
@@ -217,7 +217,7 @@ print(e);
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment:
                                 MainAxisAlignment.center,
-                                children: [
+                                children: const [
                                   Icon(
                                     Icons.logout,
                                     color: Colors.white,
@@ -246,10 +246,10 @@ print(e);
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: size.width * 0.26,
-                    height: size.width * 0.26,
+                    width: size.width * 0.30,
+                    height: size.width * 0.30,
                     decoration: BoxDecoration(
-                        color: Colors.red,
+                        color: Constant.backgroundColor,
                         shape: BoxShape.circle,
                         border: Border.all(
                           width: 8,
@@ -262,7 +262,7 @@ print(e);
                             image: NetworkImage(imageUrl == null
                                 ? 'https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png'
                                 : imageUrl),
-                            fit: BoxFit.fill)),
+                            fit: BoxFit.cover)),
                   ),
                 ],
               )

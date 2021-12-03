@@ -1,4 +1,4 @@
-#Thu Dec 02 20:46:44 EET 2021
+#Fri Dec 03 14:59:04 EET 2021
 base.2=E\:\\work_os\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
 path.2=classes3.dex
 base.1=E\:\\work_os\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
